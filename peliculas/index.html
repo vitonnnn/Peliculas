@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .formulario {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding-right: 45px;
+        }
+
+        .formulario h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .formulario input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+       
+
+        .formulario input[type="submit"] {
+            background-color: #67D9E6;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+
+        .formulario a {
+            text-decoration: none;
+            color: #67D9E6;
+        }
+
+        .formulario button {
+            background-color: #67D9E6;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .formulario button:hover {
+            background-color: #94AAE9;
+        }
+    </style>
+</head>
+<body>
+<div class="formulario">
+    <h1>Iniciar sesión</h1>
+    <p>El usuario por defecto es:"user1".</p>
+    <div class="username">
+        <input id="usuario" type="text" name="usuario" required placeholder="Usuario">
+    </div>
+    
+        <button onclick="validarFormulario()">Iniciar sesión</button>
+    </div>
+</div>
+<script>
+    cargarLocalStorage();
+
+    function cargarLocalStorage() {
+        var usuarioGuardado = localStorage.getItem("usuario");
+        if (usuarioGuardado) {
+            document.getElementById("usuario").value = usuarioGuardado;
+        }
+    }
+
+    function validarFormulario() {
+        
+            var usuario = document.getElementById("usuario").value;
+            if (usuario === "user1") {
+                localStorage.setItem("usuario", usuario);
+                window.location.href = "inicio.html";
+                return true;
+            } else {
+                alert("Usuario incorrecto. Por favor, inténtelo de nuevo.");
+                return false;
+            }
+        
+    }
+</script>
+</body>
+</html>
